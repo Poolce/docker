@@ -1,17 +1,10 @@
-#
 name: Create and publish a Docker image
-
-# Configures this workflow to run every time a change is pushed to the branch called `release`.
 on:
   push:
     paths:
     - '*/**'
-
-# Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
   REGISTRY: ghcr.io
-
-# There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -24,14 +17,13 @@ jobs:
       packages: write
       attestations: write
       id-token: write
-      # 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Check changes in a specific directory
         id: check_changes
         run: |
-          if git diff --name-only HEAD^ HEAD -- "${{ matrix.dir }}" | grep -q .; then
+          if git diff --name-only "${{ matrix.dir }}" | grep -q .; then
             echo "Changes detected in ${{ matrix.dir }}"
             echo "changed=true" >> $GITHUB_OUTPUT
           else
