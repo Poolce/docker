@@ -12,6 +12,7 @@ jobs:
       matrix:
         dir:
         - cuda_toolkit
+        - ubuntu
     permissions:
       contents: read
       packages: write
