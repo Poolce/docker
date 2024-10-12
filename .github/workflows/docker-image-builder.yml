@@ -32,7 +32,7 @@ jobs:
       - name: Check changes in a specific directory
         id: check_changes
         run: |
-          if git diff --name-only HEAD^ HEAD -- "${{ matrix.dir }}" | grep -q .; then
+          if git diff --name-only "${{ matrix.dir }}"; then
             echo "Changes detected in $DIR"
             echo "::set-output name=changed::true"
           else
