@@ -1,1 +1,1 @@
-# Basic dockerfile with CUDA Toolkits
+# Basic dockerfile with CUDA Toolkit
