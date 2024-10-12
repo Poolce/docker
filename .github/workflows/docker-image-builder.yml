@@ -47,7 +47,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ env.REGISTRY }}/${{ matrix.dir }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.dir }}
 
       - name: Build and push Docker image ${{ matrix.dir }}
         if: steps.check_changes.outputs.changed == 'true'
